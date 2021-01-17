@@ -12,15 +12,18 @@ const App = () => {
   const [password, setPassword] = useState(localStorage.getItem('password'));
 
   if (!username || !password) {
-    setUsername(prompt('Enter your username:'));
-    setPassword(prompt('Enter your password:'));
+    const usernameValue = prompt('Enter your username:');
+    const passwordValue = prompt('Enter your password:');
 
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
+    localStorage.setItem('username', usernameValue);
+    localStorage.setItem('password', passwordValue);
 
-    getMessages({ projectID, 'User-Name': username, 'User-Secret': password }, chatID, (chatID, data) => {
+    getMessages({ projectID, 'User-Name': usernameValue, 'User-Secret': passwordValue }, chatID, (chatID, data) => {
       console.log(chatID, data);
     });
+
+    setUsername(usernameValue);
+    setPassword(passwordValue);
 
     return 'Loading';
   }
