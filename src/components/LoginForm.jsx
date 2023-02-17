@@ -25,7 +25,7 @@ const Modal = () => {
       setError('Oops, incorrect credentials.');
     }
   };
-
+/* this is fix now*/
   return (
     <div className="wrapper">
       <div className="form">
