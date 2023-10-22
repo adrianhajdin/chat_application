@@ -1,6 +1,7 @@
 import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
+import filter from 'leo-profanity';
 
 const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
@@ -22,7 +23,8 @@ const ChatFeed = (props) => {
     const keys = Object.keys(messages);
 
     return keys.map((key, index) => {
-      const message = messages[key];
+      let message = messages[key];
+      message.text =  filter.clean(message.text);
       const lastMessageKey = index === 0 ? null : keys[index - 1];
       const isMyMessage = userName === message.sender.username;
 
