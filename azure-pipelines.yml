@@ -1,0 +1,46 @@
+trigger:
+  tags:
+    include:
+      - '*'
+  branches:
+    exclude:
+      - main
+ 
+pool: Default
+ 
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+ 
+- task: Npm@1
+  inputs:
+    command: 'install'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    customCommand: 'build'
+  displayName: Build
+ 
+- bash: |
+    # Check if the change is a tag or branch
+    if [ "$(git tag --contains $Build.SourceVersion)" ]; then
+      tag=$(git describe --tags --abbrev=0)
+      sed -i "s/\"version\": \".*\"/\"version\": \"$tag\"/" package.json
+      echo "tag is $tag"
+    else
+      # If it's a branch change, set the version to "1.0.0-CI-{BuildID}"
+      version="1.0.0-CI-$(Build.BuildId)"
+      # Update the version number in package.json
+      sed -i "s/\"version\": \".*\"/\"version\": \"$version\"/" package.json
+      echo "version is $version"
+    fi
+  displayName: 'Set artifact version'
+ 
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    publishRegistry: 'useFeed'
+    publishFeed: 'cf1ee12f-274b-4fe1-8aed-2625305234cc/1ea8357d-c506-473f-a254-b62332c4d26f'
+  displayName: Publish

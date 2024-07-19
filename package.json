@@ -1,7 +1,9 @@
 {
   "name": "chat_app_project",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "npm": "latest"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@testing-library/jest-dom": "^5.11.9",
