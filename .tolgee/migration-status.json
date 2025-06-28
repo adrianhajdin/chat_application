@@ -1,0 +1,62 @@
+{
+  "src/components/LoginForm.jsx": {
+    "migrated": true,
+    "keys": [
+      {
+        "name": "chat-application-title",
+        "description": "Error message shown when login credentials are incorrect",
+        "default": "Oops, incorrect credentials."
+      },
+      {
+        "name": "start-chatting-button",
+        "description": "Title of the chat application displayed at the top of the login form",
+        "default": "Chat Application"
+      },
+      {
+        "name": "",
+        "description": "Placeholder text for the username input field",
+        "default": "Username"
+      },
+      {
+        "name": "",
+        "description": "Placeholder text for the password input field",
+        "default": "Password"
+      },
+      {
+        "name": "",
+        "description": "Text for the button to start chatting after login",
+        "default": "Start chatting"
+      }
+    ]
+  },
+  "src/components/MessageForm.jsx": {
+    "migrated": true,
+    "keys": [
+      {
+        "name": "",
+        "description": "Placeholder text for the message input field in the chat",
+        "default": "Send a message..."
+      }
+    ]
+  },
+  "src/components/MyMessage.jsx": {
+    "migrated": true,
+    "keys": [
+      {
+        "name": "",
+        "description": "Alt text for message attachment image",
+        "default": "message-attachment"
+      }
+    ]
+  },
+  "src/components/TheirMessage.jsx": {
+    "migrated": true,
+    "keys": [
+      {
+        "name": "",
+        "description": "Alt text for message attachment image",
+        "default": "message-attachment"
+      }
+    ]
+  }
+}
