@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { SendOutlined, PictureOutlined } from '@ant-design/icons';
 import { sendMessage, isTyping } from 'react-chat-engine';
+import { useTranslate } from '@tolgee/react';
 
 const MessageForm = (props) => {
   const [value, setValue] = useState('');
   const { chatId, creds } = props;
+  const { t } = useTranslate();
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -32,7 +34,8 @@ const MessageForm = (props) => {
     <form className="message-form" onSubmit={handleSubmit}>
       <input
         className="message-input"
-        placeholder="Send a message..."
+        placeholder={
+t('send-message-input-placeholder')}
         value={value}
         onChange={handleChange}
         onSubmit={handleSubmit}
